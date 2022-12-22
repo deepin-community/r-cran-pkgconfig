@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+pkgname=pkgconfig
+debname=r-cran-pkgconfig
+
+if [ "$ADTTMP" = "" ] ; then
+    ADTTMP=`mktemp -d /tmp/${debname}-test.XXXXXX`
+    trap "rm -rf $ADTTMP" 0 INT QUIT ABRT PIPE TERM
+fi
+cd $ADTTMP
+cp -a /usr/share/doc/$debname/tests/* $ADTTMP
+gunzip -r *
+for testfile in *.R; do
+    echo "BEGIN TEST $testfile"
+    LC_ALL=C R --no-save < $testfile
+done
+

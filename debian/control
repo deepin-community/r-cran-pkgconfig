@@ -1,0 +1,25 @@
+Source: r-cran-pkgconfig
+Maintainer: Debian R Packages Maintainers <r-pkg-team@alioth-lists.debian.net>
+Uploaders: Andreas Tille <tille@debian.org>
+Section: gnu-r
+Testsuite: autopkgtest-pkg-r
+Priority: optional
+Build-Depends: debhelper-compat (= 12),
+               dh-r,
+               r-base-dev
+Standards-Version: 4.5.0
+Vcs-Browser: https://salsa.debian.org/r-pkg-team/r-cran-pkgconfig
+Vcs-Git: https://salsa.debian.org/r-pkg-team/r-cran-pkgconfig.git
+Homepage: https://cran.r-project.org/package=pkgconfig
+Rules-Requires-Root: no
+
+Package: r-cran-pkgconfig
+Architecture: all
+Depends: ${R:Depends},
+         ${misc:Depends}
+Recommends: ${R:Recommends}
+Suggests: ${R:Suggests}
+Description: Private Configuration for 'R' Packages
+ Set configuration options on a per-package basis.
+ Options set by a given package only apply to that package,
+ other packages are unaffected.
